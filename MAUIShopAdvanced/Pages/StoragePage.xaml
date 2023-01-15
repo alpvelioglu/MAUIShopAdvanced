@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIShopAdvanced.Pages.StoragePage"
+             Title="StoragePage">
+    <VerticalStackLayout Margin="10">
+        <Label FontSize="Large"
+               Text="Storage Type and Capacity" 
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               Margin="0,0,0,10"/>
+        <Grid ColumnDefinitions="*,*" VerticalOptions="Center" HorizontalOptions="Center">
+            <RadioButton Content="HDD" FontSize="Medium" CheckedChanged="RadioButton_CheckedChanged"/>
+            <RadioButton Content="SSD" Grid.Column="1" FontSize="Medium" CheckedChanged="RadioButton_CheckedChanged"/>
+        </Grid>
+        <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Stepper x:Name="stepper"
+                     ValueChanged="stepper_ValueChanged" />
+            <Label x:Name="storageSizeLbl"
+                   FontSize="Medium"
+                   Text="{Binding Source={x:Reference stepper}, Path=Value, StringFormat='{0}GB'}" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIShopAdvanced.Pages.RAMPage"
+             Title="RAMPage">
+    <VerticalStackLayout Margin="10" Padding="15">
+        <Label HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Text="RAM Size" 
+               FontSize="Large"/>
+        <HorizontalStackLayout VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Margin="15">
+            <Stepper x:Name="stepper"
+                     Value="4"
+                     Increment="4"
+                     Minimum="4"
+                     Maximum="64"
+                     ValueChanged="stepper_ValueChanged"/>
+            <Label x:Name="ramSizeLbl"
+                   FontSize="Medium"
+                   Text="{Binding Source={x:Reference stepper}, Path=Value, StringFormat='{0}GB'}"/>
+        </HorizontalStackLayout>
+        
+    </VerticalStackLayout>
+</ContentPage>

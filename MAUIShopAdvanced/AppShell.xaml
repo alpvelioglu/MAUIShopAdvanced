@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MAUIShopAdvanced.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MAUIShopAdvanced"
+    xmlns:Pages="clr-namespace:MAUIShopAdvanced.Pages"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <Tab Title="Home" Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:HomePage}"
+                          Route="HomePage" />
+        </Tab>
+        <Tab Title="CPU"
+             Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:CPUPage}"
+                          Route="CPUPage" />
+        </Tab>
+        <Tab Title="RAM"
+             Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:RAMPage}"
+                          Route="RAMPage" />
+        </Tab>
+        <Tab Title="Storage"
+             Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:StoragePage}"
+                          Route="StoragePage" />
+        </Tab>
+        <Tab Title="Monitor"
+             Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:MonitorPage}"
+                          Route="MonitorPage" />
+        </Tab>
+        <Tab Title="User"
+             Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:UserPage}"
+                          Route="UserPage" />
+        </Tab>
+        <Tab Title="Checkout"
+             Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:CheckoutPage}"
+                          Route="CheckoutPage" />
+        </Tab>
+        <!--<Tab Title="Final"
+             Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate Pages:FinalPage}"
+                          Route="FinalPage" />
+        </Tab>-->
+    </TabBar>
+
+</Shell>

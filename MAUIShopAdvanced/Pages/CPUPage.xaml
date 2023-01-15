@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIShopAdvanced.Pages.CPUPage"
+             Title="CPUPage">
+    
+    <ContentPage.Resources>
+        <Style TargetType="Label"
+               x:Key="tableLabel">
+            <Setter Property="FontAttributes"
+                    Value="Bold" />
+            <Setter Property="TextDecorations"
+                    Value="Underline" />
+            <Setter Property="FontSize"
+                    Value="Title" />
+            <Setter Property="HorizontalOptions"
+                    Value="Center" />
+        </Style>
+
+        <Shadow x:Key="shadow"
+                Brush="#CFD0D4"
+                Opacity="0.6"
+                Radius="15"
+                Offset="10,15" />
+
+        <Style TargetType="Frame">
+            <Setter Property="Shadow"
+                    Value="{StaticResource shadow}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Margin="10"
+                             Padding="10">
+            <Grid RowDefinitions="*,*"
+                  ColumnDefinitions="*,*"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Center">
+                <Label Text="CPU Name:"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End"
+                       Grid.Row="0"
+                       Grid.Column="0" />
+                <Entry WidthRequest="100"
+                       Margin="10"
+                       x:Name="cpuNameEntry"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       BackgroundColor="AntiqueWhite"
+                       TextColor="Black"/>
+                <Label Text="CPU Price:"
+                       VerticalOptions="Center"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       HorizontalOptions="End" />
+                <Entry WidthRequest="100"
+                       Margin="10"
+                       x:Name="cpuPriceEntry"
+                       Grid.Row="1"
+                       Grid.Column="1" 
+                       BackgroundColor="AntiqueWhite"
+                       TextColor="Black"/>
+            </Grid>
+
+            <Button x:Name="AddButton"
+                    Text="Add"
+                    WidthRequest="100"
+                    HeightRequest="50"
+                    Clicked="AddButton_Clicked" />
+
+            <Grid ColumnDefinitions="*,*,*,*"
+                  Margin="0,20,0,0">
+                <Label Text="CPU ID"
+                       Grid.Column="0"
+                       Style="{StaticResource tableLabel}" />
+                <Label Text="CPU Name"
+                       Grid.Column="1"
+                       Style="{StaticResource tableLabel}" />
+                <Label Text="CPU Price"
+                       Grid.Column="2"
+                       Style="{StaticResource tableLabel}" />
+                <Label Text="Operations"
+                       Grid.Column="3"
+                       Style="{StaticResource tableLabel}" />
+            </Grid>
+
+            <ListView HasUnevenRows="True"
+                      x:Name="cpuListView"
+                      ItemTapped="cpuListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="*,*,*,*">
+                                <Label Text="{Binding ID}"
+                                       Grid.Column="0"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                                <Label Text="{Binding CPUName}"
+                                       Grid.Column="1"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                                <Label Text="{Binding CPUPrice, StringFormat='{0:C}'}"
+                                       Grid.Column="2"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                                <Button Text="Delete"
+                                        Grid.Column="3"
+                                        x:Name="Delete"
+                                        Clicked="Delete_Clicked"
+                                        WidthRequest="75"
+                                        HeightRequest="40" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIShopAdvanced.Pages.CheckoutPage"
+             Title="CheckoutPage">
+
+    <ContentPage.Resources>
+        <Style TargetType="Label"
+               x:Key="tableLabel">
+            <Setter Property="FontAttributes"
+                    Value="Bold" />
+            <Setter Property="TextDecorations"
+                    Value="Underline" />
+            <Setter Property="FontSize"
+                    Value="Title" />
+            <Setter Property="HorizontalOptions"
+                    Value="Center" />
+        </Style>
+
+        <Shadow x:Key="shadow"
+                Brush="#CFD0D4"
+                Opacity="0.6"
+                Radius="15"
+                Offset="10,15" />
+
+        <Style TargetType="Frame">
+            <Setter Property="Shadow"
+                    Value="{StaticResource shadow}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid ColumnDefinitions="*,*"
+                  RowDefinitions="*,*,*,*,*,*,*,*">
+                <Grid ColumnDefinitions="*,*,*"
+                      Margin="0,20,0,0"
+                      Grid.Row="0"
+                      Grid.Column="0">
+                    <Label Text="User ID"
+                           Grid.Column="0"
+                           Style="{StaticResource tableLabel}" />
+                    <Label Text="User Name"
+                           Grid.Column="1"
+                           Style="{StaticResource tableLabel}" />
+                    <Label Text="User Address"
+                           Grid.Column="2"
+                           Style="{StaticResource tableLabel}" />
+                </Grid>
+
+                <ListView HasUnevenRows="True"
+                          x:Name="userListView"
+                          ItemTapped="userListView_ItemTapped"
+                          Grid.Column="0"
+                          Grid.Row="1">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="*,*,*">
+                                    <Label Text="{Binding ID}"
+                                           Grid.Column="0"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding UserName}"
+                                           Grid.Column="1"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding UserAddress}"
+                                           Grid.Column="2"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid ColumnDefinitions="*,*,*"
+                      Margin="0,20,0,0"
+                      Grid.Row="2"
+                      Grid.Column="0">
+                    <Label Text="CPU ID"
+                           Grid.Column="0"
+                           Style="{StaticResource tableLabel}" />
+                    <Label Text="CPU Name"
+                           Grid.Column="1"
+                           Style="{StaticResource tableLabel}" />
+                    <Label Text="CPU Price"
+                           Grid.Column="2"
+                           Style="{StaticResource tableLabel}" />
+                </Grid>
+
+                <ListView HasUnevenRows="True"
+                          x:Name="cpuListView"
+                          ItemTapped="cpuListView_ItemTapped"
+                          Grid.Column="0"
+                          Grid.Row="3">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="*,*,*">
+                                    <Label Text="{Binding ID}"
+                                           Grid.Column="0"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding CPUName}"
+                                           Grid.Column="1"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding CPUPrice, StringFormat='{0:C}'}"
+                                           Grid.Column="2"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid ColumnDefinitions="*,*,*"
+                      Margin="0,20,0,0"
+                      Grid.Row="4">
+                    <Label Text="Monitor ID"
+                           Grid.Column="0"
+                           Style="{StaticResource tableLabel}" />
+                    <Label Text="Monitor Name"
+                           Grid.Column="1"
+                           Style="{StaticResource tableLabel}" />
+                    <Label Text="Monitor Price"
+                           Grid.Column="2"
+                           Style="{StaticResource tableLabel}" />
+                </Grid>
+
+                <ListView HasUnevenRows="True"
+                          x:Name="monitorListView"
+                          ItemTapped="monitorListView_ItemTapped"
+                          Grid.Row="5">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="*,*,*">
+                                    <Label Text="{Binding ID}"
+                                           Grid.Column="0"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding MonitorName}"
+                                           Grid.Column="1"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding MonitorPrice, StringFormat='{0:C}'}"
+                                           Grid.Column="2"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <HorizontalStackLayout Grid.Column="0"
+                                       Grid.Row="6"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Margin="0,15,0,0">
+                    <Label x:Name="lblRamPrice"
+                           FontSize="Medium" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Grid.Column="0"
+                                       Grid.Row="7"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Margin="0,15,0,0">
+                    <Label x:Name="lblStoragePrice"
+                           FontSize="Medium" />
+                </HorizontalStackLayout>
+
+                <Label x:Name="lblTotalPrice"
+                       FontSize="Medium"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center" />
+                <Button HeightRequest="50"
+                        WidthRequest="75"
+                        Text="Order"
+                        x:Name="orderButton"
+                        Clicked="orderButton_Clicked"
+                        Grid.Row="3"
+                        Grid.Column="1" />
+
+                <Grid ColumnDefinitions="*,*,*,*,*,*"
+                      Grid.Row="4"
+                      Grid.Column="1">
+                    <Label Text="User"
+                           Grid.Column="0"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Style="{StaticResource tableLabel}" />
+                    <Label Text="CPU"
+                           Grid.Column="1"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Style="{StaticResource tableLabel}" />
+                    <Label Text="Monitor"
+                           Grid.Column="2"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Style="{StaticResource tableLabel}" />
+                    <Label Text="Type"
+                           Grid.Column="3"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Style="{StaticResource tableLabel}" />
+                    <Label Text="Capacity"
+                           Grid.Column="4"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Style="{StaticResource tableLabel}" />
+                    <Label Text="RAM"
+                           Grid.Column="5"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Style="{StaticResource tableLabel}" />
+                </Grid>
+
+                <ListView Grid.Row="5"
+                          Grid.Column="1"
+                          HasUnevenRows="True"
+                          x:Name="checkoutListView"
+                          ItemTapped="checkoutListView_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid ColumnDefinitions="*,*,*,*,*,*">
+                                    <Label Text="{Binding UserName}"
+                                           Grid.Column="0"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding CPUName}"
+                                           Grid.Column="1"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding MonitorName}"
+                                           Grid.Column="2"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding StorageType}"
+                                           Grid.Column="3"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding StorageCapacity, StringFormat='{0}GB'}"
+                                           Grid.Column="4"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding RamSize}"
+                                           Grid.Column="5"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Label Text="In Order to complete your purchase, click the your order in the list"
+                       FontSize="Medium"
+                       Grid.Row="6"
+                       Grid.Column="1" />
+            </Grid>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
